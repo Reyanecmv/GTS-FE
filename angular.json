@@ -149,5 +149,8 @@
       }
     }
   },
-  "defaultProject": "GTS-FE"
+  "defaultProject": "GTS-FE",
+  "cli": {
+    "analytics": "2c89b92b-5273-445b-aa72-a4d50ac203e2"
+  }
 }
