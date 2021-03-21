@@ -5,7 +5,23 @@ export interface AlertModel {
 }
 
 export enum AlertTypes {
-	Fire = 'Fire Alert',
-	AccessControl = 'Access Control Alert',
-	Sensor = 'Sensor Alert'
+	Fire = 'FIRE',
+	AccessControl = 'ACCESS',
+	Sensor = 'SENSOR'
+}
+
+export interface AlertDTO {
+	alertType: AlertTypes,
+	doorStatus: boolean,
+	accessAllowed: boolean,
+	doorTooOpen: boolean,
+	date: Date,
+	temperature: number,
+	co2Lvl: number,
+	smokeDetectorStatus: boolean,
+	sprinklerStatus: boolean,
+	status: boolean,
+	currentValue: number,
+	alarmStatus: boolean,
+	batteryLevel: number
 }

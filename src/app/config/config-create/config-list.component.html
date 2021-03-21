@@ -1,3 +1,59 @@
-<div class="config-container">
-
+<div class="container-fluid">
+  <form [formGroup]="form">
+    <div class="row">
+      <div class="col-4">
+        <h5>Rule name</h5>
+        <input formControlName="name" class="name-input" type="text" pInputText>
+        <h5>Alert type</h5>
+        <p-dropdown formControlName="alertType" [options]="alertTypesOptions" placeholder="Select an alert type" optionLabel="name" optionValue="code"  [style]="{'width':'15w'}"></p-dropdown>
+        <div class="mt-5">
+          <button class="btn btn-primary" (click)="submit()">Submit</button>
+          <button class="btn btn-secondary ml-2" (click)="cancel()">Cancel</button>
+        </div>
+      </div>
+      <div class="col">
+        <button (click)="addPropertiesForm()">ADD</button>
+        <div formArrayName="properties"
+        *ngFor="let item of propertiesArray.controls; let i = index">
+          <div class="row" [formGroupName]="i">
+            <div class="col">
+              <button (click)="removePropertyFormArray(i)">DELETE</button>
+              <h5>Property</h5>
+              <p-dropdown formControlName="property" [options]="propertiesSelectedOption" placeholder="Select a property" optionLabel="name" [style]="{'width':'15vw'}"></p-dropdown>
+            </div>
+            <div class="col">
+              <button (click)="addSelectedPropertyForm(item)">ADD</button>
+              <div class="row" formArrayName="selectedPropertyOption" *ngFor="let subItem of getSelectedPropertyOptionArray(item).controls; let j = index">
+                <div class="col"[formGroupName]="j">
+                  <button (click)="removeSelectedPropertiesFormInstance(j, item)">DELETE</button>
+                  <div class="row mt-3" *ngIf="item.value.property.type === propertyType.Boolean">
+                    <h5 class="mr-3">Property value</h5>
+                    <p-dropdown formControlName="booleanValue" [options]="booleanRuleOptions" placeholder="Select a value" optionLabel="name" optionValue="code" [style]="{'width':'10vw'}"></p-dropdown>
+                  </div>
+                  <div *ngIf="item.value.property.type === propertyType.Number">
+                    <div class="row">
+                      <h5 class="mr-3">Condition</h5>
+                      <p-dropdown formControlName="propertyName" [options]="conditionOptions" placeholder="Select a condition" optionLabel="name" optionValue="code" [style]="{'width':'15vw'}"></p-dropdown>
+                    </div>
+                    <div class="row mt-3">
+                      <h5 class="mr-3">First value</h5>
+                      <input formControlName="firstValue" class="name-input" type="text" pInputText [style]="{'width':'10vw'}">
+                    </div>
+                    <div class="row mt-3" *ngIf="subItem.value.propertyName === ruleTypes.Between">
+                      <h5 class="mr-3">Second value</h5>
+                      <input formControlName="secondValue" class="name-input" type="text" pInputText [style]="{'width':'10vw'}">
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <h5 class="mr-3">Logical operator</h5>
+                    <p-dropdown formControlName="logicalOperator" [options]="logicalOperatorOptions" placeholder="Select a value" optionLabel="name" optionValue="code" [style]="{'width':'10vw'}"></p-dropdown>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

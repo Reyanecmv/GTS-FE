@@ -1,13 +1,6 @@
-
-
 export interface SensorAlertModel {
-	status: EquipmentStatus;
+	status: boolean;
 	currentValue: number;
-	alarmStatus: EquipmentStatus;
+	alarmStatus: boolean;
 	batteryLevel: number;
-}
-
-export enum EquipmentStatus {
-	On,
-	Off
 }

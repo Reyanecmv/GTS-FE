@@ -3,31 +3,34 @@ import { AlertModel } from '../models/alert.model';
 import { AlertService } from '../alert.service';
 
 @Component({
-  selector: 'app-alert-list',
-  templateUrl: './alert-list.component.html',
-  styleUrls: ['./alert-list.component.scss']
+	selector: 'app-alert-list',
+	templateUrl: './alert-list.component.html',
+	styleUrls: ['./alert-list.component.scss']
 })
 export class AlertListComponent implements OnInit, OnDestroy {
-  public alerts: AlertModel[] = [];
-  public cols =  [
-    {field: 'alertType', header: 'Alert Type'},
-    {field: 'dateCreated', header: 'Date Created'},
-    {field: 'properties', header: 'Properties'}
-  ];
+	public alerts: AlertModel[] = [];
+	public cols = [
+		{ field: 'alertType', header: 'Alert Type' },
+		{ field: 'dateCreated', header: 'Date Created' },
+		{ field: 'properties', header: 'Properties' }
+	];
 
 
-  constructor(private alertService: AlertService) { }
+	constructor(private alertService: AlertService) {
+	}
 
-  ngOnInit(): void {
-    this.getData();
-  }
+	ngOnInit(): void {
+		this.getData();
+	}
 
-  private getData() {
-    this.alertService.getAlerts().subscribe(resp => {
-      this.alerts = resp;
-    });
-  }
+	private getData() {
+		this.alertService.getAlerts().subscribe(resp => {
+			this.alerts = resp.map(item => {
+				return { alertType: item.alertType, dateCreated: item.date, properties: JSON.stringify(item)}
+			});
+		});
+	}
 
-  ngOnDestroy(): void {
-  }
+	ngOnDestroy(): void {
+	}
 }
