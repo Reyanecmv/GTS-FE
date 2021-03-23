@@ -1,0 +1,18 @@
+<div class="main-container">
+  <div class="button-container">
+    <button class="btn btn-primary" routerLink="/config/create">Create rule</button>
+  </div>
+  <div class="list-container">
+    <div class="item" *ngFor="let rule of rulesList">
+      <div class="item-title">
+          {{rule.name}}
+      </div>
+      <div class="item-body">
+          <pre>
+            {{rule.properties | json}}
+          </pre>
+        <button (click)="deleteRule(rule._id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
         <p-dropdown formControlName="alertType" [options]="alertTypesOptions" placeholder="Select an alert type" optionLabel="name" optionValue="code"  [style]="{'width':'15w'}"></p-dropdown>
         <div class="mt-5">
           <button class="btn btn-primary" (click)="submit()">Submit</button>
-          <button class="btn btn-secondary ml-2" (click)="cancel()">Cancel</button>
+          <button class="btn btn-secondary ml-2" (click)="cancel()" routerLink="/config/list">Cancel</button>
         </div>
       </div>
       <div class="col">

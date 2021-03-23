@@ -6,11 +6,11 @@ import { ConfigService } from '../config.service';
 import { InputNumberOptions } from '../models/input-number-options.enum';
 
 @Component({
-	selector: 'app-config-list',
-	templateUrl: './config-list.component.html',
-	styleUrls: ['./config-list.component.scss']
+	selector: 'app-config-create',
+	templateUrl: './config-create.component.html',
+	styleUrls: ['./config-create.component.scss']
 })
-export class ConfigListComponent implements OnInit {
+export class ConfigCreateComponent implements OnInit {
 	public form: FormGroup;
 	public propertiesOptions: Map<string, DropdownOptions[]>;
 	public propertiesSelectedOption: DropdownOptions[] = [];
@@ -22,8 +22,8 @@ export class ConfigListComponent implements OnInit {
 		{ name: 'Access control alert', code: 'ACCESS', inactive: false }
 	];
 	public conditionOptions = [
-		{ name: 'Greater than', code: 'GREATER_THAN', inactive: false },
-		{ name: 'Lesser than', code: 'LESSER_THAN', inactive: true },
+		{ name: 'Greater than', code: 'GREATER_THEN', inactive: false },
+		{ name: 'Lesser than', code: 'LESSER_THEN', inactive: true },
 		{ name: 'Equal', code: 'EQUAL', inactive: false },
 		{ name: 'Between', code: 'BETWEEN', inactive: false }
 	];

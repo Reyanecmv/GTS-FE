@@ -10,7 +10,7 @@ export class ConfigService {
 
 
   public save(formData: any) {
-    this.configHttp.saveRule(this.mapRule(formData));
+    this.configHttp.saveRule(this.mapRule(formData)).subscribe(resp => console.log(resp));
   }
 
   public mapRule(formData: any): Rule {

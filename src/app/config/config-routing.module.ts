@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConfigListComponent } from './config-create/config-list.component';
+import { ConfigCreateComponent } from './config-create/config-create.component';
+import { ConfigListComponent } from './config-list/config-list.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'create',
+    component: ConfigCreateComponent
+  },
+  {
+    path: 'list',
     component: ConfigListComponent
-  }
+  },
+  { path: '**', redirectTo: '/config/list'}
 ];
 
 @NgModule({
